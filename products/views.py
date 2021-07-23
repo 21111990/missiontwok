@@ -250,9 +250,7 @@ def Cart(request):
     val3 = int(request.GET["userid1"])
     Clientdata = ClientDetailLog.objects.filter(Client_name=val1, client_mobile=val2, randid=val3)
     BuyProducts1 = BuyProducts.objects.filter(Client_name=val1, client_mobile=val2,randid=val3)
-    return render(request, 'cart.html',
-                      {'username': val1, 'userMobile': val2,'userId1': val3,'Buyproducts': BuyProducts1
-                       , 'Clientdata1': Clientdata})
+    return render(request, 'Cart.html', {'username': val1, 'userMobile': val2,'userId1': val3,'Buyproducts': BuyProducts1, 'Clientdata1': Clientdata})
 def History(request):
 
     val1 = request.GET["username"]
