@@ -1,0 +1,37 @@
+{% extends 'themeBill.html' %}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+
+        {% for Bill in BillInfo %}
+
+            <div class="col-sm-4">
+                <form action="BillIDetailnfo" method="POST">
+                         {% csrf_token %}
+                        <input type="hidden" name="UserId" id="UserId" value="{{Bill.Userid}}">
+                       <input type="hidden" name="RandId" id="RandId" value="{{Bill.randId}}">
+                       <input type="hidden" name="UserName" id="UserName" value="{{Bill.Client_name}}">
+                       <input type="hidden" name="UserMobile" id="UserMobile" value="{{Bill.client_mobile}}">
+                       <input type="hidden" name="UserTotal" id="UserTotal" value="{{Bill.TotalAmt}}">
+                        <input type="hidden" name="BillDAte" id="BillDAte" value="{{Bill.BillDate}}">
+                <div class="card5">
+
+                  <div class="card5-body">
+
+                      <h7 class="card-title"><font color="red"> Bill No : {{Bill.Userid}} ({{Bill.BillDate}})</font></h7>
+                      <h4 class="card-title">Name    : {{Bill.Client_name}}</h4>
+                      <h5 class="card-title">Mobile  : {{Bill.client_mobile}}</h5>
+
+                     <h6 class="card-title">Total :{{Bill.TotalAmt}} </h6>
+                      <button type="submit" class="btn btn-primary" >Open</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

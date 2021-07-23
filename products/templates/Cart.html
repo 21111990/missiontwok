@@ -1,0 +1,80 @@
+{% extends 'theme.html' %}
+
+{% block content%}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+</style>
+<div class="container">
+    <div class="row">
+
+
+
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong><font color="red">Purchase summary</font> </strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr class="table-dark">
+        							<th><strong>PARTICULARS</strong></th>
+        							<th class="text-center"><strong>QTY</strong></th>
+        							<th class="text-center"><strong>PRICE</strong></th>
+        							<th class="text-right"><strong></strong></th>
+
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+
+
+							 	{% for product in Buyproducts %}
+                        			 {% if product.randid == userId1 %}
+
+										<tr class="table-dark">
+											<td>{{product.Products_name}}</td>
+											<td class="text-center">{{product.Quantity}}</td>
+											<td class="text-center" >{{product.price1}}</td>
+											<td class="text-right"><a href="{% url 'NewPro'%}?id={{product.id}}&userId1={{userId1}}&UserId={{product.Userdid}}&username={{username}}&userMobile={{userMobile}}&Qnty={{product.Quantity}}&PName={{product.Products_name}}">
+														<i class="material-icons">delete</i>
+														 </a> </td>
+										</tr>
+							 		{% endif %}
+								{% endfor %}
+									 <tr>
+										 <td class="table-center" colspan="2"><b>Total</b></td>
+
+										  <td class="text-center" id="TotalPrice1"></td>
+
+                                	 </tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'theme.html' %}
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+             {% if product.name == result %}
+
+            <div class="col-sm-4">
+
+                <div class="card3">
+                    <img src="{{product.image}}" class="card-img-top2" alt="...">
+                  <div class="card-body2">
+                       <form action="Confirm" method="post">
+                         {% csrf_token %}
+                           <input type="hidden" name="CnClient_id" id="CnClient_id" value="{{userId1}}">
+                            <input type="hidden" name="CnClient_Name" id="CnClient_Name" value="{{username}}">
+                            <input type="hidden" name="CnClient_Mobile" id="CnClient_Mobile" value="{{userMobile}}">
+                           <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+                           <input type="hidden" name="Totalp" id="Totalp" value="123">
+                          <input type="hidden" name="CnFname" id="CnFname" value="{{product.name}}">
+                          <input type="hidden" name="CnFQty" id="CnFQty" value="{{result1}}">
+                          <input type="hidden" name="CnfPrice" id="CnfPrice" value="{{result2}}">
+
+                         <h5 class="card-title">{{product.name}}</h5>
+                         <p class="card-text">Rs:{{product.price}}</p>
+                           <p class="card-text">Qty :{{result1}} </p>
+                          <p class="card-text">Price :{{result2}}</p>
+
+                            <!--- <button type="submit" class="btn btn-success"
+                                     style="width: 250px; right: 16px; top: 220px;position: absolute;">Confirm</button> --->
+                             </form>
+                       <form action="NewPro" method="post">
+                            {% csrf_token %}
+                           <input type="hidden" name="CnClient_id" id="CnClient_id" value="{{userId1}}">
+                            <input type="hidden" name="CnClient_Name" id="CnClient_Name" value="{{username}}">
+                            <input type="hidden" name="CnClient_Mobile" id="CnClient_Mobile" value="{{userMobile}}">
+                           <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+                          <input type="hidden" name="CnFname" id="CnFname" value="{{product.name}}">
+                          <input type="hidden" name="CnFQty" id="CnFQty" value="{{result1}}">
+                          <input type="hidden" name="CnfPrice" id="CnfPrice" value="{{result2}}">
+                           <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+
+                      <br><button type="submit" class="btn btn-danger"
+                                  style="width: 250px;top: 200px;position: absolute;">
+
+                            <i class="material-icons">shopping_cart</i>Add To Cart</button>
+                          </form>
+
+                  </div>
+                </div>
+
+            </div>
+             {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

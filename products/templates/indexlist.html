@@ -1,0 +1,33 @@
+{% extends 'theme.html' %}
+
+{% block content%}
+{{userid12}}
+
+<div class="container">
+    <div class="row">
+
+        {% for product in products %}
+            <div class="col-sm-4">
+                <form action="ProductId" method="POST">
+                         {% csrf_token %}
+                <div class="card">
+                    <img src="{{product.image}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                       {% for UserDetails in UserDetailslog %}
+                         <input type="hidden" name="UserId" id="UserId" value="{{UserDetails.id}}">
+                        {% endfor %}
+                      <input type="hidden" name="prId" id="prId" value="{{product.Product_name}}">
+                      <input type="hidden" name="RandId1" id="RandId1" value="">
+                       <input type="hidden" name="UserName" id="UserName" value="">
+                       <input type="hidden" name="UserMobile" id="UserMobile" value="">
+                     <h5 class="card-title">{{product.Product_name}}</h5>
+                      <button type="submit" class="btn btn-primary" >click</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

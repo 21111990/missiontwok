@@ -1,0 +1,53 @@
+{% extends 'theme.html' %}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+
+               <table class="table table-striped table-hover">
+                     <tr class="table-dark">
+                        <TH class="table-dark">PARTICULARS</TH>
+                        <TH class="table-dark" style="align:right">QTY</TH>
+                        <TH class="table-dark">PRICE</TH>
+                          <TH class="table-dark"></TH>
+                    </tr>
+                   {% for product in Buyproducts %}
+                         {% if product.randid == userId1 %}
+                        <tr class="table-light">
+                            <td class="table-light">{{product.Products_name}}</td>
+                            <td class="table-light">{{product.Quantity}}</td>
+                            <td class="table-light" >{{product.price1}}</td>
+                            <td class="table-light"><a href="{% url 'NewPro'%}?id={{product.id}}&userId1={{userId1}}&UserId={{product.Userdid}}&username={{username}}&userMobile={{userMobile}}&Qnty={{product.Quantity}}&PName={{product.Products_name}}">
+                                <i class="material-icons">delete</i>
+                            </a> </td>
+                        </tr>
+                    {% endif %}
+                 {% endfor %}
+                           <tr class="table-danger">
+                                     <td class="table-danger" colspan="2">Total</td>
+                                      <td class="table-dabger" id="TotalPrice1" colspan="2"></td>
+                                 </tr>
+                </table>
+                     <div>
+                       <form action="BillInfo" method="post">
+                             {% csrf_token %}
+                              {% for ClientD in Clientdata1 %}
+                                    <input type="hidden" name="BillNo" id="BillNo" value="{{ClientD.id}}">
+                                    <input type="hidden" name="BClient_id" id="BClient_id" value="{{ClientD.randid}}">
+                                    <input type="hidden" name="BClient_Name" id="BClient_Name" value="{{ClientD.Client_name}}">
+                                    <input type="hidden" name="BClient_Mobile" id="BClient_Mobile" value="{{ClientD.client_mobile}}">
+                              {% endfor %}
+                                    <input type="hidden" name="BillAmnt" id="BillAmnt">
+
+                                 <button type="submit" class="btn btn-primary" style="width: 250px;position: absolute;left:30%"> Done Purchase</button>
+
+                       </form>
+
+                    </div>
+
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'theme.html' %}
+{% block content%}
+
+ <div class="container">
+    <div class="row">
+
+
+            <div class="card4">
+               <table class="table table-striped table-hover">
+                     <tr class="table-dark">
+                        <TH class="table-dark">PARTICULARS</TH>
+                        <TH class="table-dark">QTY</TH>
+                        <TH class="table-dark">PRICE</TH>
+                    </tr>
+                   {% for product in Buyproducts %}
+                         {% if product.Userdid == BillNo %}
+                        <tr class="table-light">
+                            <td class="table-light">{{product.Products_name}}</td>
+                            <td class="table-light">{{product.Quantity}}</td>
+                            <td class="table-light">{{product.price1}}</td>
+                        </tr>
+                    {% endif %}
+                 {% endfor %}
+                                <tr class="table-danger">
+                                     <td class="table-danger" colspan="2">Total</td>
+                                      <td class="table-dabger" id="TotalPrice1" colspan="2"></td>
+                                 </tr>
+               </table>
+                        <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+                         <input type="hidden" name="RandId" id="RandId" value="{{userId1}}">
+                          <input type="hidden" name="UserName" id="UserName" value="{{username}}">
+
+                      <div class="my-class">
+                          <div class="card-body" id="BillData">
+
+                                <h6 class="card-subtitle mb-2 text-muted"><font color="white">Dear Customer Your Purchase Is Done</font></h6>
+                                <p class="card-text"><font color="white">Bill No is </font><font color="red"> {{BillNo}}</font>.<font color="white">Thank You For Usnig.</font></p>
+                                <a href="/products" class="btn btn-danger" style="width: 180px; left: 250; top: 100px;position: absolute;left:20%">
+                                     Done</a>
+                              </div>
+
+                      </div>
+
+
+
+
+                    </div>
+
+            </div>
+
+    </div>
+</div>
+
+
+
+
+ <div class="col-sm-4" Id="Bill">
+
+ </div>
+{% endblock %}

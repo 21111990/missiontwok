@@ -1,0 +1,59 @@
+{% extends 'theme.html' %}
+{% block content%}
+
+
+        <div class="container">
+    <div class="row">
+
+
+            <div class="card4">
+               <table class="table table-striped table-hover">
+                     <tr class="table-dark">
+                        <TH class="table-dark">PARTICULARS</TH>
+                        <TH class="table-dark">QTY</TH>
+                        <TH class="table-dark">PRICE</TH>
+                         <TH class="table-dark"></TH>
+                    </tr>
+                   {% for product in Buyproducts %}
+                         {% if product.Userdid == UserId %}
+                        <tr class="table-light">
+                            <td class="table-light">{{product.Products_name}}</td>
+                            <td class="table-light">{{product.Quantity}}</td>
+                            <td class="table-light">{{product.price1}}</td>
+                            <td class="table-light"><a href="{% url 'Confirm'%}?id={{product.id}}&userId1={{userId1}}&UserId={{UserId}}&username={{username}}&userMobile={{userMobile}}">
+                                 <i class="material-icons">delete</i>
+                            </a> </td>
+                        </tr>
+                    {% endif %}
+                 {% endfor %}
+
+
+                  <div>
+                       <form action="BillInfo" method="post">
+                             {% csrf_token %}
+                               <tr class="table-danger">
+                                     <td class="table-danger" colspan="2">Total</td>
+                                      <td class="table-dabger" id="TotalPrice1" colspan="2"></td>
+                                 </tr>
+                            </table>
+
+                                    <input type="hidden" name="BillNo" id="BillNo" value="{{UserId}}">
+                                    <input type="hidden" name="BClient_id" id="BClient_id" value="{{userId1}}">
+                                    <input type="hidden" name="BClient_Name" id="BClient_Name" value="{{username}}">
+                                    <input type="hidden" name="BClient_Mobile" id="BClient_Mobile" value="{{userMobile}}">
+                                     <input type="hidden" name="BillAmnt" id="BillAmnt">
+
+                                 <button type="submit" class="btn btn-primary" style="width: 250px; left: 250; top: 250;position: absolute;left:20%"> Done Purchase</button>
+
+                       </form>
+
+                    </div>
+
+            </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+

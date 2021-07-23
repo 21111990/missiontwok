@@ -1,0 +1,117 @@
+{% extends 'theme.html' %}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong><font color="red">Purchase summary</font> </strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr >
+        							<th><strong>PARTICULARS</strong></th>
+        							<th class="text-center"><strong>QTY</strong></th>
+        							<th class="text-center"><strong>PRICE</strong></th>
+        							<th class="text-right"><strong></strong></th>
+
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+
+
+							 	{% for product in Buyproducts %}
+                        			 {% if product.randid == userId1 %}
+
+										<tr>
+											<td>{{product.Products_name}}</td>
+											<td class="text-center">{{product.Quantity}}</td>
+											<td class="text-center">{{product.price1}}</td>
+											<td class="text-right"><a href="{% url 'NewPro'%}?id={{product.id}}&userId1={{userId1}}&UserId={{product.Userdid}}&username={{username}}&userMobile={{userMobile}}&Qnty={{product.Quantity}}&PName={{product.Products_name}}">
+														<i class="material-icons">delete</i>
+														 </a> </td>
+										</tr>
+							 		{% endif %}
+								{% endfor %}
+									 <tr class="table-danger">
+										 <td class="table-danger" colspan="2">Total</td>
+
+										  <td class="text-center" id="TotalPrice1" colspan=""></td>
+
+                                	 </tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+              <!---  <table class="table table-striped table-hover">
+                     <tr class="table-dark">
+                        <TH class="table-dark">PARTICULARS</TH>
+                        <TH class="table-dark" style="align:right">QTY</TH>
+                        <TH class="table-dark">PRICE</TH>
+                          <TH class="table-dark"></TH>
+                    </tr>
+                   {% for product in Buyproducts %}
+                         {% if product.Userdid == UserId %}
+                        <tr class="table-light">
+                            <td class="table-light">{{product.Products_name}}</td>
+                            <td class="table-light">{{product.Quantity}}</td>
+                            <td class="table-light">{{product.price1}}</td>
+                            <td class="table-light"><a href="{% url 'NewPro'%}?id={{product.id}}&userId1={{userId1}}&UserId={{UserId}}&username={{username}}&userMobile={{userMobile}}&Qnty={{product.Quantity}}&PName={{product.Products_name}}">
+                                <i class="material-icons">delete</i>
+                            </a> </td>
+                        </tr>
+                    {% endif %}
+                 {% endfor %}
+                           <tr class="table-danger">
+                                     <td class="table-danger" colspan="2">Total</td>
+                                      <td class="table-dabger" id="TotalPrice1" colspan="2"></td>
+                                 </tr>
+                </table> --->
+                     <div>
+                       <form action="BillInfo" method="post">
+                             {% csrf_token %}
+
+                                    <input type="hidden" name="BillNo" id="BillNo" value="{{UserId}}">
+                                    <input type="hidden" name="BClient_id" id="BClient_id" value="{{userId1}}">
+                                    <input type="hidden" name="BClient_Name" id="BClient_Name" value="{{username}}">
+                                    <input type="hidden" name="BClient_Mobile" id="BClient_Mobile" value="{{userMobile}}">
+                                     <input type="hidden" name="BillAmnt" id="BillAmnt">
+
+                                 <button type="submit" class="btn btn-primary" style="width: 320px;position: absolute;left:10%"> Done Purchase</button>
+
+                       </form>
+
+                    </div>
+
+        {% for product in products %}
+           <br><br><br> <div class="col-sm-3">
+                <form action="ProductId" method="POST">
+                         {% csrf_token %}
+                <div class="card">
+                    <img src="{{product.image}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                       <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+                      <input type="hidden" name="RandId" id="RandId" value="{{userId1}}">
+                       <input type="hidden" name="UserName" id="UserName" value="{{username}}">
+                       <input type="hidden" name="UserMobile" id="UserMobile" value="{{userMobile}}">
+                      <input type="hidden" name="prId" id="prId" value="{{product.Product_name}}">
+
+                     <h5 class="card-title">{{product.Product_name}}</h5>
+                      <button type="submit" class="btn btn-primary" >click</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

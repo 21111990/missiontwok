@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+
+    <!-- Bootstrap CSS -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+         var CnfPrice;
+         var totalPrice=0;
+         $('td:nth-child(3)').each(function()
+         {
+            CnfPrice=$(this).html();
+            totalPrice+=parseFloat(CnfPrice);
+            $('#TotalPrice1').text(totalPrice);
+            $('#BillAmnt').val(totalPrice);
+         });
+
+    });
+</script>
+
+
+    <title>SUPER MARKET</title>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index1'%}?userid={{userId1}}&username={{username}}&userMobile={{userMobile}}">Home</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Add To Cart</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Select List
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+   {% block content%}
+    {% endblock %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+  </body>
+<style>
+body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.row {
+    width: 100%;
+    left: 4%;
+    position: absolute;
+    top:17%;
+}
+  .card-img-top
+  {
+    height: 120px;
+    width:180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5.25rem;
+  }
+   .card
+  {
+
+    width:400px;
+    height:220px
+  }
+h1 {
+    left: 42%;
+    position: absolute;
+    color: rgb(75 42 26 / 59%);
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 2.25rem;
+    background-image: url(https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=6&m=1032083272&s=612x612&w=0&h=UfQGfNpNfFtsH0-WKb-QT7wydzdXB7yTY5Hc9iWm_l4=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+.card2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 2.25rem;
+    background-image: url(https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=6&m=1032083272&s=612x612&w=0&h=UfQGfNpNfFtsH0-WKb-QT7wydzdXB7yTY5Hc9iWm_l4=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+
+ .card2
+  {
+
+    width:420px;
+    height:250px
+  }
+
+.card3 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 2.25rem;
+    background-image: url(https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=6&m=1032083272&s=612x612&w=0&h=UfQGfNpNfFtsH0-WKb-QT7wydzdXB7yTY5Hc9iWm_l4=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+
+ .card3
+  {
+
+    width:420px;
+    height:345px
+  }
+
+
+
+.card-body {
+    position: absolute;
+    left: 52%;
+}
+
+.card5 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 3.75rem;
+    background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id996078816?k=6&m=996078816&s=612x612&w=0&h=frpQG7R-F3NK0rktec6xJvoKekFv8oaYd04VJ-Am6QE=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+ .card5
+  {
+
+    width:460px;
+    height:195px
+  }
+
+.card5-body {
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    color: white;
+}
+
+</style>
+<style>
+.my-class {
+    position: absolute;
+    width: 335px;
+    height: 165px;
+    background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id996078816?k=6&m=996078816&s=612x612&w=0&h=frpQG7R-F3NK0rktec6xJvoKekFv8oaYd04VJ-Am6QE=);
+    left:35%;
+    top:25%;
+}
+
+@media only screen and (max-width: 600px)
+{
+  .my-class {
+      position: fixed;
+      width: 335px;
+      height: 165px;
+      left:7%;
+      top:25%;
+      background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id996078816?k=6&m=996078816&s=612x612&w=0&h=frpQG7R-F3NK0rktec6xJvoKekFv8oaYd04VJ-Am6QE=);
+  }
+  .card-img-top
+    {
+      height: 140px;
+      width:160px;
+
+    }
+    .card
+    {
+
+      width:400px;
+      height:180px
+    }
+    div#purchase
+    {
+      height: 355px;
+    }
+}
+
+div#BillData
+{
+  left:8%;
+}
+</style>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'themeBill.html' %}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+
+
+
+            <div class="col-sm-4">
+                <form action="ConfBill" method="POST">
+                         {% csrf_token %}
+                      <input type="hidden" name="UserId" id="UserId" value="{{BillNo}}">
+                       <input type="hidden" name="RandId" id="RandId" value="{{userId1}}">
+                       <input type="hidden" name="UserName" id="UserName" value="{{username}}">
+                       <input type="hidden" name="UserMobile" id="UserMobile" value="{{userMobile}}">
+                       <input type="hidden" name="UserTotal" id="UserTotal" value="{{BillTotal}}">
+                <div class="card6">
+
+                  <div class="card6-body">
+
+                      <h7 class="card-title"><font color="red"> Bill No : {{BillNo}} ({{BillDate}})</font></h7>
+                      <h4 class="card-title">Name    : {{username}}</h4>
+                      <h5 class="card-title">Mobile  : {{userMobile}}</h5>
+
+                             <table class="table table-striped table-hover">
+                                 <tr class="table-dark">
+                                    <TH class="table-dark">PARTICULARS</TH>
+                                    <TH class="table-dark">QTY</TH>
+                                    <TH class="table-dark">PRICE</TH>
+                                </tr>
+                         {% for Bill in BillingDetail %}
+
+                                <tr class="table-light">
+                                    <td class="table-light">{{Bill.Products_name}}</td>
+                                    <td class="table-light">{{Bill.Quantity}}</td>
+                                    <td class="table-light">{{Bill.price1}}</td>
+                                </tr>
+                           {% endfor %}
+                                 <tr class="table-danger">
+                                     <td class="table-danger" colspan="2">Total</td>
+                                      <td class="table-dabger" colspan="2">{{BillTotal}}</td>
+                                 </tr>
+                   </table>
+                      <button type="submit" class="btn btn-danger" style="width: 300px;position: absolute;left:9%">Confirm Bill</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+
+    </div>
+
+</div>
+{% endblock %}

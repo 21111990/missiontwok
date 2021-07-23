@@ -1,0 +1,130 @@
+{% extends 'theme.html' %}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+{% if Id1 == 'H' %}
+
+             <div class="col-sm-4">
+                   <div class="card7">
+
+                       <div class="card7-body">
+                             <a href="{% url 'History'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}&Id=H1&UId=0" class="btn btn-danger" style="width: 300px;height: 160px;border-radius: 70px;">
+                               <br><h2>  Pending for confirmation<br>({{count1}})</h2>
+                             </a>
+                         </div>
+                 </div>
+             </div>
+              <div class="col-sm-4">
+                 <div class="card7">
+                        <div class="card7-body">
+                                <a href="{% url 'History'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}&Id=H2&UId=0" class="btn btn-primary" style="width: 300px;height: 160px; border-radius: 70px;">
+                                   <br> <h2>  Done <br>Purchase<br>({{count2}})</h2>
+                                </a>
+                         </div>
+                 </div>
+              </div>
+
+
+            {% elif Id1 == 'H1' %}
+
+
+             {% for Bill in BillInfo %}
+                {% if Bill.BillCheck == "" %}
+                    <div class="col-sm-4">
+
+
+                        <div class="card5">
+
+                          <div class="card5-body">
+
+                              <h7 class="card-title"><font color="red"> Bill No : {{Bill.Userid}} ({{Bill.BillDate}})</font></h7>
+                              <h4 class="card-title">Name    : {{Bill.Client_name}}</h4>
+                              <h5 class="card-title">Mobile  : {{Bill.client_mobile}}</h5>
+
+                             <h6 class="card-title">Total :{{Bill.TotalAmt}} </h6>
+                              <a href="{% url 'History'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}&Id=H11&UId={{Bill.randId}}" class="btn btn-danger">
+                                    Open Details
+                             </a>
+                          </div>
+                        </div>
+
+                    </div>
+                 {% endif %}
+            {% endfor %}
+
+            {% elif Id1 == 'H11' %}
+                     <div class="col-sm-4">
+
+                        <div class="card6">
+
+
+                             {% for Bill1 in BillInfo %}
+
+                                 {% if Bill1.randId == UId %}
+
+                                      <h7 class="card-title"><font color="red"> Bill No : {{Bill1.Userid}} ({{Bill1.BillDate}})</font></h7>
+                                      <h4 class="card-title">Name    : {{Bill1.Client_name}}</h4>
+                                      <h5 class="card-title">Mobile  : {{Bill1.client_mobile}}</h5>
+                                {% endif %}
+                              {% endfor %}
+                            <table class="table table-striped table-hover">
+                                <tr class="table-dark">
+                                     <TH class="table-dark">PARTICULARS</TH>
+                                     <TH class="table-dark" style="align:right">QTY</TH>
+                                     <TH class="table-dark">PRICE</TH>
+
+                                </tr>
+                   {% for Bill2 in BillingDetail %}
+
+                             <tr class="table-light">
+                                    <td class="table-light">{{Bill2.Products_name}}</td>
+                                    <td class="table-light">{{Bill2.Quantity}}</td>
+                                    <td class="table-light">{{Bill2.price1}}</td>
+                            </tr>
+
+                     {% endfor %}
+                           <tr class="table-danger">
+                                     <td class="table-danger" colspan="2">Total</td>
+                                      <td class="table-dabger" id="TotalPrice1" colspan="2"></td>
+                                 </tr>
+                </table>
+
+
+
+
+                        </div>
+
+                     </div>
+                 {% elif Id1 == 'H2' %}
+
+
+             {% for Bill in DonePay1 %}
+
+                    <div class="col-sm-4">
+
+
+                        <div class="card5">
+
+                          <div class="card5-body">
+
+                              <h7 class="card-title"><font color="red"> Bill No : {{Bill.Userid}}</font></h7><br>
+                               <h7 class="card-title"><font color="red"> Bill ConfirmDtae: ({{Bill.BillConfirmDate}})</font></h7>
+                              <h4 class="card-title">Name    : {{Bill.Client_name}}</h4>
+                              <h5 class="card-title">Mobile  : {{Bill.client_mobile}}</h5>
+
+                             <h6 class="card-title">Total :{{Bill.TotalAmt}} </h6>
+                              <a href="{% url 'History'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}&Id=H11&UId={{Bill.randId}}" class="btn btn-danger">
+                                    Open Details
+                             </a>
+                          </div>
+                        </div>
+
+                    </div>
+                 {% endfor %}
+            {% endif %}
+    </div>
+
+</div>
+{% endblock %}

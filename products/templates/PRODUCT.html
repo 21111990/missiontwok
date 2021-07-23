@@ -1,0 +1,34 @@
+{% extends 'theme.html' %}
+
+{% block content%}
+
+
+        <div class="container">
+    <div class="row">
+            <H3 id="pr1"><font color="Green">{{result}}</font></H3><br><br><br>
+        {% for product in products %}
+             {% if product.Product_id == result %}
+
+                    <div class="col-sm-4">
+                        <form action="add" method="post">
+                                 {% csrf_token %}
+                        <div class="card12">
+                            <img src="{{product.image}}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <input type="hidden" name="prname1" id="prname1" value="{{product.name}}">
+                                 <input type="hidden" name="RandId" id="RandId" value="{{userId1}}">
+                                 <input type="hidden" name="UserName" id="UserName" value="{{username}}">
+                                  <input type="hidden" name="UserMobile" id="UserMobile" value="{{userMobile}}">
+                                    <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+                             <h5 class="card-title">{{product.name}}</h5>
+                             <p class="card-text">Rs:{{product.price}}</p>
+                              <button type="submit" class="btn btn-primary" >Open</button>
+                          </div>
+                        </div>
+                        </form>
+                    </div>
+             {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'themeBill.html' %}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+             <div class="col-sm-4">
+                   <div class="card7">
+
+                       <div class="card7-body">
+                             <a href="{% url 'Billinglnfo'%}" class="btn btn-danger" style="width: 350px;height: 200px;position: absolute;left:9%">
+                               <br><h2>  Pending for confirmation<br>({{count1}})</h2>
+                             </a>
+                         </div>
+                 </div>
+             </div>
+              <div class="col-sm-4">
+                 <div class="card7">
+                        <div class="card7-body">
+                                <a href="{% url 'DoneBilling'%}" class="btn btn-primary" style="width: 350px;height: 200px;position: absolute;left:40%">
+                                   <br> <h2>  Pending for<br> Payment<br>({{count2}})</h2>
+                                </a>
+                         </div>
+                 </div>
+              </div>
+            <div class="col-sm-4">
+                 <div class="card7">
+                        <div class="card7-body">
+                                <a href="{% url 'DoneList'%}" class="btn btn-success" style="width: 350px;height: 200px;position: absolute;left:40%">
+                                   <br> <h2>  Done <br> Payment<br>({{count3}})</h2>
+                                </a>
+                         </div>
+                 </div>
+              </div>
+
+
+
+
+
+
+    </div>
+
+</div>
+{% endblock %}

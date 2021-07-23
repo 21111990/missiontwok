@@ -1,0 +1,47 @@
+{% extends 'theme.html' %}
+{% block content%}
+
+
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+             {% if product.name == result %}
+
+            <div class="col-sm-4">
+                <form action="Buy" method="post">
+                    {% csrf_token %}
+                <div class="card2" >
+                    <img src="{{product.image}}" class="card-img-top1" alt="...">
+                  <div class="card-body1">
+
+                      <input type="hidden" name="stock" id="stock" value="{{product.stock}}">
+                      <input type="hidden" name="id" id="id" value="{{product.id}}">
+                      <input type="hidden" name="Qname" id="Qname" value="{{product.name}}">
+                      <input type="hidden" name="Qprice" id="Qprice" value="{{product.price}}">
+                      <input type="hidden" name="RandId" id="RandId" value="{{userId1}}">
+                      <input type="hidden" name="UserName" id="UserName" value="{{username}}">
+                      <input type="hidden" name="UserMobile" id="UserMobile" value="{{userMobile}}">
+                      <input type="hidden" name="UserId" id="UserId" value="{{UserId}}">
+                     <h5 class="card-title">{{product.name}}</h5>
+                      {% if product.stock <= 0 %} <font color="red"><b>(No Stock)</b></font> {% endif %}
+                     <p class="card-text">Rs:{{product.price}} <font color="red">
+                         {% if product.stock <= 10 %}
+                            {% if product.stock != 0 %}
+                                (Only {{product.stock}} is Left)
+                            {% endif %}
+                         {% endif %}</font></p>
+                       Qnty:<input type="number" name="Qnty" id="Qnty" value=""
+                                   size="5" min="0" max="{{product.stock}}" step="0.05" required {% if product.stock <= 0 %} readonly {% endif %}>
+                     <br><br> <button type="submit" class="btn btn-primary" {% if product.stock <= 0 %} disabled {% endif %}
+                      style="width: 250px;">Buy now</button>
+                  </div>
+                </div>
+                </form>
+            </div>
+             {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+

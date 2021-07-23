@@ -1,0 +1,215 @@
+<doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+   <div class="body"></div>
+		<div class="grad"></div>
+
+		<div class="header">
+			<div>Mission Two<span> <B>KATTAKAMPAL</B></span></div>
+		</div>
+
+   				{% load static %}
+   			  <img src="{% static 'products/images/logo2.jpg' %}" width="450px" height="250px" id="imglog">
+
+		<br>
+		<div class="login">
+
+				 <form action="index1" method="POST">
+                         {% csrf_token %}
+					 <input type="hidden"  name="userid" id="userid" value="{{rand1}}"><br><br>
+				<input type="text" placeholder="username" name="username" id="username" maxlength="50" required onblur="Admin1(this.value);"><br><br>
+				<input type="text" placeholder="mobiel no" name="userMobile" id="userMobile"
+					   pattern="[6-9]{1}[0-9]{9}"  title="Please Enter Your number Proper" required><br><br>
+					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5">USER</font><input type="radio" id="Logid1" name="Logid" value="USER" checked>
+					  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5">ADMIN</font><input type="radio" id="Logid2" name="Logid" value="ADMIN" >
+							<input type="submit" value="Login">
+					 </form>
+		</div>
+  </body>
+  <script>
+	 function Admin1(name)
+	 {
+
+	 	if (name == 'ADMIN' || name == 'admin')
+	 	{
+	 		document.getElementById("Logid2").disabled = false;
+	 		document.getElementById("Logid2").checked = true;
+	 	}
+	 	else
+	 	{
+	 		document.getElementById("Logid2").disabled = true;
+	 		 document.getElementById("Logid1").checked = true;
+	 	}
+	 }
+  </script>
+<style>
+
+img#imglog {
+    position: absolute;
+    top: 7%;
+    left: 19%;
+    width: 720px;
+    height: 600px;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.body{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	//background-image: url({% static 'products/images/logo.jpeg' %});
+	background-size: cover;
+	-webkit-filter: blur(5px);
+	z-index: 0;
+	background-color: #205a8d;
+
+}
+
+.grad{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	z-index: 1;
+	opacity: 0.7;
+}
+
+
+
+.header{
+	position: absolute;
+	top: calc(33% - 35px);
+	left: calc(50% - 255px);
+	z-index: 2;
+}
+
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 35px;
+	font-weight: 200;
+}
+
+.header div span{
+	color: #5379fa !important;
+}
+
+
+
+.login{
+	position: absolute;
+	top: calc(45% - 75px);
+	left: calc(30% - 50px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.login input[type=text]{
+	width: 560px;
+	height: 95px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 65px;
+	font-weight: 400;
+	padding: 10px;
+}
+
+.login input[type=radio]{
+	width: 75px;
+	height: 40px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 40px;
+	font-weight: 400;
+	padding: 10px;
+}
+
+.login input[type=number]{
+	width: 480px;
+	height: 85px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 40px;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.login input[type=submit]{
+	width: 560px;
+	height: 95px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 40px;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.login input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.login input[type=button]:active{
+	opacity: 0.6;
+}
+
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=button]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+</style>
+</html>

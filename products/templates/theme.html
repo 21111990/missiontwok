@@ -1,0 +1,580 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+   <style>
+    body {
+    --header-height: 50px;
+
+    margin: var(--header-height) 0 0 0;
+    font-family: 'Muli', sans-serif;
+}
+
+.preload * {
+    transition: none !important;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: #2a1f79;
+    display: flex;
+}
+
+.header__button {
+    width: var(--header-height);
+    flex-shrink: 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+a#Navhd {
+    background-color: #2a1f79;
+    height: 19%;
+}
+.nav__links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 210px;
+    background: #f4ece9;
+    transform: translateX(-250px);
+    transition: transform 0.3s;
+}
+
+.nav--open .nav__links {
+    transform: translateX(0);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    color: #666666;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 12px 15px;
+    background: transform 0.2s;
+}
+
+.nav__link > i {
+    margin-right: 15px;
+}
+
+.nav__link--active {
+    color: #009578;
+}
+
+.nav__link--active,
+.nav__link:hover {
+    background: #eeeeee;
+}
+
+.nav__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.nav--open .nav__overlay {
+    visibility: visible;
+    opacity: 1;
+}
+h2#H2h {
+    position: absolute;
+    left: 60%;
+}
+  </style>
+    <meta charset="utf-8">
+
+
+    <!-- Bootstrap CSS -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+         var CnfPrice;
+         var totalPrice=0;
+         $('td:nth-child(3)').each(function()
+         {
+            CnfPrice=$(this).html();
+            totalPrice+=parseFloat(CnfPrice);
+            $('#TotalPrice1').text(totalPrice);
+            $('#BillAmnt').val(totalPrice);
+         });
+
+    });
+</script>
+
+
+    <title>Mission Two KATTAKAMPAL</title>
+  </head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<body class="preload">
+    <header class="header">
+        <button class="header__button" id="btnNav" type="button">
+            <i class="material-icons">menu</i>
+        </button>
+        {% load static %}
+
+        <h8><font color="white" style=""><B>Mission Two</B> </font><BR><font color="#f40707"><B>KATTAKAMPAL</B></font></h8>
+    </header>
+
+    <nav class="nav">
+        <div class="nav__links">
+
+          <!---  <img src="{% static 'products/images/logo2.jpg' %}" width="250px" height="150px"> --->
+
+
+
+
+                <a id="Navhd" href="{% url 'index1'%}?userid={{userId1}}&username={{username}}&userMobile={{userMobile}}" class="nav__link">
+                   <font color="white" >
+                    <i class="material-icons">home</i>
+                    Home<br>
+                   </font>
+                    <h2 id="H2h"><font color="#f40707"><b> M</b></font><font color="green"><b>T</b></font><font color="white"><b>K</b></font></h2>
+                </a>
+                <br>
+
+
+            <a class="nav__link" href="{% url 'Cart'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}">
+                <i class="material-icons">shopping_cart</i>
+                Purchase List
+            </a>
+           <!---  <a class="nav__link" href="{% url 'Cart'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}">
+                <i class="material-icons">list</i>
+                Purchase List
+            </a> --->
+            <a class="nav__link" href="{% url 'History'%}?userid1={{userId1}}&username={{username}}&userMobile={{userMobile}}&Id=H&UId=0">
+                <i class="material-icons">history</i>
+                History
+            </a>
+             <a class="nav__link" href="{% url 'index'%}">
+                <i class="material-icons">person</i>
+                Signout
+            </a>
+        </div>
+        <div class="nav__overlay"></div>
+    </nav>
+
+</body>
+
+  <!--- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index1'%}?userid={{userId1}}&username={{username}}&userMobile={{userMobile}}">Home</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Add To Cart</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Select List
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav> --->
+   {% block content%}
+    {% endblock %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+  </body>
+<style>
+body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    /*background-image: url({% static 'products/images/logo.jpeg' %});*/
+}
+.row {
+    width: 100%;
+    left: 1%;
+    position: absolute;
+    top:20%;
+
+
+}
+
+  .card-img-top
+  {
+    height: 120px;
+    width:180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5.25rem;
+  }
+
+   .card-img-top1
+  {
+    height: 220px;
+    width:330px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5.25rem;
+  }
+
+   .card-img-top2
+  {
+    height: 220px;
+    width:330px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5.25rem;
+  }
+
+   .card
+  {
+
+    width:400px;
+    height:220px
+  }
+
+
+
+h3#pr1
+ {
+    left: 43%;
+    position: absolute;
+    color: rgb(75 42 26 / 59%);
+    top:-17%;
+  }
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 4.25rem;
+    background-color: #f1eff8;
+    //background-image: url(https://media.istockphoto.com/vectors/light-blue-simple-pastel-soft-color-for-background-blue-plain-color-vector-id1253590992?k=6&m=1253590992&s=170667a&w=0&h=43no36erJqsUecgzve61mnIlUbKuvraAhVtj9R2w8ng=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+.card2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 3.25rem;
+    background-color: #f1eff8;
+    //background-image: url(https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=6&m=1032083272&s=612x612&w=0&h=UfQGfNpNfFtsH0-WKb-QT7wydzdXB7yTY5Hc9iWm_l4=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+
+ .card2
+  {
+
+    width:420px;
+    height:520px
+  }
+
+ .card12 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 4.25rem;
+    background-color: #f1eff8;
+    //background-image: url(https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=6&m=1032083272&s=612x612&w=0&h=UfQGfNpNfFtsH0-WKb-QT7wydzdXB7yTY5Hc9iWm_l4=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+
+ .card12
+  {
+
+    width:420px;
+    height:250px
+  }
+
+.card3 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 2.25rem;
+    background-color: #f1eff8;
+    //background-image: url(https://media.istockphoto.com/photos/yellow-background-picture-id1032083272?k=6&m=1032083272&s=612x612&w=0&h=UfQGfNpNfFtsH0-WKb-QT7wydzdXB7yTY5Hc9iWm_l4=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+
+ .card3
+  {
+
+    width:480px;
+    height:345px
+  }
+
+
+
+.card-body {
+    position: absolute;
+    left: 45%;
+}
+
+.card-body1 {
+    position: absolute;
+    left: 20%;
+    TOP: 50%;
+}
+
+.card-body2 {
+    position: absolute;
+    left: 20%;
+    TOP: 50%;
+}
+
+
+.card5 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 3.75rem;
+    background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id996078816?k=6&m=996078816&s=612x612&w=0&h=frpQG7R-F3NK0rktec6xJvoKekFv8oaYd04VJ-Am6QE=);
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+
+}
+ .card5
+  {
+
+    width:360px;
+    height:225px
+  }
+
+.card5-body {
+    position: absolute;
+    left: 8%;
+    top: 5%;
+    color: white;
+}
+
+input#Qnty {
+    width: 129px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid rgb(86 29 223 / 60%);
+    border-radius: 2px;
+    color: #6a3e3e;
+    font-family: 'Exo', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+
+td#TotalPrice1
+{
+    color: #cd0e0e;
+    font-weight: bold;
+}
+</style>
+<style>
+.my-class {
+    position: absolute;
+    width: 335px;
+    height: 165px;
+    background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id996078816?k=6&m=996078816&s=612x612&w=0&h=frpQG7R-F3NK0rktec6xJvoKekFv8oaYd04VJ-Am6QE=);
+    left:35%;
+    top:25%;
+}
+
+@media only screen and (max-width: 600px)
+{
+
+
+
+    .my-class {
+      position: fixed;
+      width: 335px;
+      height: 145px;
+      left:4%;
+      top:25%;
+      background-image: url(https://media.istockphoto.com/photos/blue-background-picture-id996078816?k=6&m=996078816&s=612x612&w=0&h=frpQG7R-F3NK0rktec6xJvoKekFv8oaYd04VJ-Am6QE=);
+  }
+  .card-img-top
+    {
+      height: 130px;
+      width:145px;
+
+    }
+    .card
+    {
+
+      width:375px;
+      height:150px
+    }
+    div#purchase
+    {
+      height: 355px;
+    }
+}
+
+ .card2
+  {
+
+    width:370px;
+    height:520px
+  }
+
+     .card3
+  {
+
+    width:360px;
+    height:560px
+  }
+
+
+ .card12
+  {
+
+    width:375px;
+    height:190px
+  }
+
+div#BillData
+{
+  left:8%;
+}
+
+h3#pr1
+ {
+    left: 43%;
+    position: absolute;
+    color: rgb(75 42 26 / 59%);
+    top:-11%;
+  }
+</style>
+<script>
+          window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.querySelector(".nav");
+
+            document.querySelector("#btnNav").addEventListener("click", () => {
+                nav.classList.add("nav--open");
+            });
+
+            document.querySelector(".nav__overlay").addEventListener("click", () => {
+                nav.classList.remove("nav--open");
+            });
+        });
+</script>
+</html>
