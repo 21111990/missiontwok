@@ -42,6 +42,17 @@ class PaymentDone(models.Model):
     TotalAmt = models.FloatField()
     DonePayment = models.CharField(max_length=100)
 
+class Client_details(models.Model):
+    Userid = models.IntegerField()
+    Client_name = models.CharField(max_length=255)
+    client_mobile = models.IntegerField()
+    Client_Add1 = models.CharField(max_length=255)
+    Client_add2 = models.CharField(max_length=255)
+    Client_add3 = models.CharField(max_length=255)
+    Client_pin = models.IntegerField()
+    randId = models.IntegerField()
+
+
 
 
 

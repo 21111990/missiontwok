@@ -19,8 +19,8 @@
 				 <form action="index1" method="POST">
                          {% csrf_token %}
 					 <input type="hidden"  name="userid" id="userid" value="{{rand1}}"><br><br>
-				<input type="text" placeholder="username" name="username" id="username" maxlength="50" required onblur="Admin1(this.value);"><br><br>
-				<input type="text" placeholder="mobiel no" name="userMobile" id="userMobile"
+				<input type="text" placeholder="user name" name="username" id="username" maxlength="50" required onblur="Admin1(this.value);"><br><br>
+				<input type="text" placeholder="mobile no" name="userMobile" id="userMobile"
 					   pattern="[6-9]{1}[0-9]{9}"  title="Please Enter Your number Proper" required><br><br>
 					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5">USER</font><input type="radio" id="Logid1" name="Logid" value="USER" checked>
 					  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5">ADMIN</font><input type="radio" id="Logid2" name="Logid" value="ADMIN" >

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product,Productinshop,BuyProducts,ClientDetailLog,BillDetails,PaymentDone
+from .models import Product,Productinshop,BuyProducts,ClientDetailLog,BillDetails,PaymentDone,Client_details
 import random
 from django import forms
 
@@ -164,14 +164,39 @@ def BillInfo(request):
     val4 = int(request.POST["BClient_Mobile"])
     val5 = request.POST["BillAmnt"]
     BillDetails_info = BillDetails(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4, TotalAmt=val5)
+
     if not BillDetails.objects.filter(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4,
                                       TotalAmt=val5).exists():
         BillDetails_info.save()
     BillDetails1 = BillDetails.objects.filter(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4,
                                       TotalAmt=val5)
     BuyProducts1 = BuyProducts.objects.filter(Client_name=val3, client_mobile=val4,randid=val2,Userdid=val1)
-    return render(request, 'BillInfo.html',
-                  {'BillNo': val1, 'userId1': val2, 'username': val3, 'userMobile': val4, 'BillTotal': val5,'ClientBillDetails':BillDetails1,'Buyproducts':BuyProducts1})
+    if not Client_details.objects.filter(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4).exists():
+        return render(request, 'BillInfo_address.html',
+                      {'BillNo': val1, 'userId1': val2, 'username': val3, 'userMobile': val4, 'BillTotal': val5,
+                       'ClientBillDetails': BillDetails1, 'Buyproducts': BuyProducts1})
+    else:
+        return render(request, 'BillInfo.html',
+                      {'BillNo': val1, 'userId1': val2, 'username': val3, 'userMobile': val4, 'BillTotal': val5,
+                       'ClientBillDetails': BillDetails1, 'Buyproducts': BuyProducts1})
+
+def BillInfoaddress(request):
+    val1 = int(request.POST["BillNo"])
+    val2 = int(request.POST["BClient_id"])
+    val3 = request.POST["BClient_Name"]
+    val4 = int(request.POST["BClient_Mobile"])
+    val5 = request.POST["BillTotal"]
+    val6 = str(request.POST["Add1"])
+    val7 = str(request.POST["Add2"])
+    val8 = str(request.POST["Add3"])
+    val9 = int(request.POST["pincode"])
+    ClientDetails_Info = Client_details(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4, Client_Add1=val6,Client_add2=val7,Client_add3=val8,Client_pin=val9)
+    ClientDetails_Info.save()
+    BuyProducts1 = BuyProducts.objects.filter(Client_name=val3, client_mobile=val4,randid=val2,Userdid=val1)
+    BillDetails1 = BillDetails.objects.filter(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4,
+                                      TotalAmt=val5)
+    return render(request, 'BillInfo.html',{'BillNo': val1, 'userId1': val2, 'username': val3, 'userMobile': val4,'ClientBillDetails': BillDetails1, 'Buyproducts': BuyProducts1})
+
 
 
 def AdminLog(request):

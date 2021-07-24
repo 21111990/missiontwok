@@ -23,6 +23,7 @@ urlpatterns = [
     path('ConfPayment', views.ConfPayment, name='ConfPayment'),
     path('DoneList', views.DoneList, name='DoneList'),
     path('Cart', views.Cart, name='Cart'),
-    path('History', views.History, name='History')
+    path('History', views.History, name='History'),
+    path('BillInfoaddress', views.BillInfoaddress, name='BillInfoaddress')
 ] + static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
