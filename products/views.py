@@ -171,7 +171,7 @@ def BillInfo(request):
     BillDetails1 = BillDetails.objects.filter(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4,
                                       TotalAmt=val5)
     BuyProducts1 = BuyProducts.objects.filter(Client_name=val3, client_mobile=val4,randid=val2,Userdid=val1)
-    if not Client_details.objects.filter(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4).exists():
+    if not Client_details.objects.filter(Client_name=val3, client_mobile=val4).exists():
         return render(request, 'BillInfo_address.html',
                       {'BillNo': val1, 'userId1': val2, 'username': val3, 'userMobile': val4, 'BillTotal': val5,
                        'ClientBillDetails': BillDetails1, 'Buyproducts': BuyProducts1})
