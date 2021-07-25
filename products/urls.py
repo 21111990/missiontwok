@@ -26,6 +26,7 @@ urlpatterns = [
     path('History', views.History, name='History'),
     path('BillInfoaddress', views.BillInfoaddress, name='BillInfoaddress'),
     path('shopproduct', views.shopproduct, name='shopproduct'),
-    path('prdouctlist', views.prdouctlist, name='prdouctlist')
+    path('prdouctlist', views.prdouctlist, name='prdouctlist'),
+    path('logout', views.logout, name='logout')
 ] + static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
