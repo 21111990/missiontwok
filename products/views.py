@@ -259,7 +259,6 @@ def ConfPayment(request):
     val3 = request.POST["UserName"]
     val4 = int(request.POST["UserMobile"])
     val5 = request.POST["UserTotal"]
-    print (val1)
     a = PaymentDone.objects.get(Userid=val1, randId=val2, Client_name=val3, client_mobile=val4)
     a.DonePayment = "Done"
     a.save()
@@ -290,3 +289,58 @@ def History(request):
     Done_count = PaymentDone.objects.filter(Client_name=val1,client_mobile=val2).count()
     return render(request, 'History.html', {'username': val1, 'userMobile': val2,'userId1':val3,'Id1':val4,'UId':val5,'count1': BillSum_count,
                                              'count2': Done_count,'BillInfo':BillSum,'BillingDetail':Billing1,'DonePay1':DonePay})
+
+def shopproduct(request):
+    if request.method == 'POST':
+        val1 = int(request.POST["id"])
+        val2 = str(request.POST["Mod"])
+        val3 = str(request.POST["product"])
+        val4 = str(request.POST["image"])
+        if val1 != 0:
+            a = Productinshop.objects.get(id=val1)
+            a.Product_name = val3
+            a.image = val4
+            a.save()
+        else:
+            Productinshop_Info = Productinshop(Product_name=val3, image=val4)
+            Productinshop_Info.save()
+
+    else:
+        val1 = int(request.GET["id"])
+        val2 = str(request.GET["Mod"])
+        if val2 == 'Delete':
+            DeleteList = Productinshop.objects.get(id=val1)
+            DeleteList.delete()
+    Shopproducts_all = Productinshop.objects.all()
+    return render(request, 'shopproduct.html', {'id':val1,'Mod':val2,'Shopproducts': Shopproducts_all})
+
+def prdouctlist(request):
+    if request.method == 'POST':
+        val1 = int(request.POST["id"])
+        val2 = str(request.POST["Mod"])
+        val3 = str(request.POST["product"])
+        val4 = str(request.POST["image"])
+        val5 = int(request.POST["Stock"])
+        val6 = float(request.POST["price"])
+        val7 = str(request.POST["productid"])
+        if val1 != 0:
+            a = Product.objects.get(id=val1)
+            a.name = val3
+            a.image = val4
+            a.stock = val5
+            a.price = val6
+            a.Product_id = val7
+            a.save()
+        else:
+            Product_Info = Product(name=val3, image=val4,stock=val5,price=val6,Product_id=val7)
+            Product_Info.save()
+
+    else:
+        val1 = int(request.GET["id"])
+        val2 = str(request.GET["Mod"])
+        if val2 == 'Delete':
+            DeleteList = Product.objects.get(id=val1)
+            DeleteList.delete()
+    Shopproducts_all = Productinshop.objects.all()
+    Product_all = Product.objects.all()
+    return render(request, 'prdouctlist.html', {'id':val1,'Mod':val2,'Productall': Product_all,'Shopproducts': Shopproducts_all})

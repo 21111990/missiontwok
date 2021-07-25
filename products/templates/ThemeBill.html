@@ -1,7 +1,106 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+   <style>
+    body {
+    --header-height: 50px;
+
+    margin: var(--header-height) 0 0 0;
+    font-family: 'Muli', sans-serif;
+}
+
+.preload * {
+    transition: none !important;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: #2a1f79;
+    display: flex;
+}
+
+.header__button {
+    width: var(--header-height);
+    flex-shrink: 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+a#Navhd {
+    background-color: #2a1f79;
+    height: 19%;
+}
+.nav__links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 210px;
+    background: #f4ece9;
+    transform: translateX(-250px);
+    transition: transform 0.3s;
+}
+
+.nav--open .nav__links {
+    transform: translateX(0);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    color: #666666;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 12px 15px;
+    background: transform 0.2s;
+}
+
+.nav__link > i {
+    margin-right: 15px;
+}
+
+.nav__link--active {
+    color: #009578;
+}
+
+.nav__link--active,
+.nav__link:hover {
+    background: #eeeeee;
+}
+
+.nav__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.nav--open .nav__overlay {
+    visibility: visible;
+    opacity: 1;
+}
+h2#H2h {
+    position: absolute;
+    left: 60%;
+}
+  </style>
     <meta charset="utf-8">
 
 
@@ -29,47 +128,63 @@
 </script>
 
 
-    <title>SUPER MARKET</title>
+    <title>Mission Two KATTAKAMPAL</title>
   </head>
-  <body>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<body class="preload">
+    <header class="header">
+        <button class="header__button" id="btnNav" type="button">
+            <i class="material-icons">menu</i>
+        </button>
+        {% load static %}
+
+        <h8><font color="white" style=""><B>Mission Two</B> </font><BR><font color="#f40707"><B>KATTAKAMPAL</B></font></h8>
+    </header>
+
+    <nav class="nav">
+        <div class="nav__links">
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'AdminLog'%}">Home</a>
-        </li>
-       <!---  <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>--->
-    </div>
-  </div>
-</nav>
+
+
+
+                <a id="Navhd" href="{% url 'AdminLog' %}" class="nav__link">
+                   <font color="white" >
+                    <i class="material-icons">home</i>
+                    Home<br>
+                   </font>
+                    <h2 id="H2h"><font color="#f40707"><b> M</b></font><font color="green"><b>T</b></font><font color="white"><b>K</b></font></h2>
+                </a>
+                <br>
+
+
+
+            <a class="nav__link" href="{% url 'shopproduct' %}?id=0&Mod=open">
+                <i class="material-icons">list</i>
+                Products in shop
+            </a>
+
+            <a class="nav__link" href="{% url 'prdouctlist' %}?id=0&Mod=open">
+                <i class="material-icons">list</i>
+                 Products List
+            </a>
+
+
+             <a class="nav__link" href="{% url 'index'%}">
+                <i class="material-icons">person</i>
+                Signout
+            </a>
+        </div>
+        <div class="nav__overlay"></div>
+    </nav>
+
+</body>
+
+
    {% block content%}
     {% endblock %}
     <!-- Optional JavaScript; choose one of the two! -->
@@ -97,7 +212,7 @@ body {
 }
 .row {
     width: 100%;
-    left: 4%;
+    left: 1%;
     position: absolute;
     top:17%;
 }
@@ -303,5 +418,58 @@ div#BillData
 {
   left:8%;
 }
+.card9 {
+    position: fixed;
+    height: 480px;
+    background-color: #e0def0;
+    //background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL-0C7Cg5RrtmqDqRgpmPkRjpf0V3qHgcqog&usqp=CAU);
+    top: 90px;
+    width: 345px;
+    left: 6px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 1.75rem;
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid ##fff;
+}
+.card-header {
+
+   background-color: #e5658a;
+    color: white;
+    position: fixed;
+    width: 330px;
+    left: 13px;
+    height: 90px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 1.75rem;
+    border-style: solid;
+	border-width: 10px;
+	border-color: rgb(255, 255, 255);
+	border: 5px solid #e5658a;
+
+
+}
+.card-body9 {
+    position: absolute;
+    top: 95px;
+}
 </style>
+<script>
+          window.addEventListener("load", () => {
+            document.body.classList.remove("preload");
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.querySelector(".nav");
+
+            document.querySelector("#btnNav").addEventListener("click", () => {
+                nav.classList.add("nav--open");
+            });
+
+            document.querySelector(".nav__overlay").addEventListener("click", () => {
+                nav.classList.remove("nav--open");
+            });
+        });
+</script>
 </html>

@@ -1,0 +1,165 @@
+{% extends 'ThemeBill.html' %}
+
+{% block content%}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+</style>
+<div class="container">
+    <div class="row">
+
+
+
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong><font color="red">Shop products</font> </strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr class="table-dark">
+        							<th><strong>PARTICULARS</strong></th>
+
+        							<th class="text-right"><strong></strong></th>
+
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+
+
+							 	{% for product in Shopproducts %}
+
+
+										<tr class="table-danger">
+
+
+
+											<td><a href="{% url 'shopproduct' %}?id={{product.id}}&Mod=edit">
+												<b>{{product.Product_name}}</b>
+														 </a> </td>
+
+											<td class="text-right"><a href="{% url 'shopproduct' %}?id={{product.id}}&Mod=Delete">
+														<i class="material-icons">delete</i>
+														 </a> </td>
+										</tr>
+
+								{% endfor %}
+							<tr>
+								<td class="text-center">
+								 <a href="{% url 'shopproduct' %}?id=0&Mod=Add" class="btn btn-primary">
+                               		 Add New product
+                            		 </a>
+								</td>
+							</tr>
+
+    						</tbody>
+    					</table>
+
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+		{% if Mod == 'edit' %}
+			 <div class="card9 text-center">
+                                  <div class="card-header">
+                                   <br><h5> Please update product</h5>
+                                  </div>
+                              <div class="card-body9">
+                                  <br><br>
+                                   <form action="shopproduct" method="post">
+									   	<input type="hidden" name="Mod" id="Mod" value="open">
+                                     {% csrf_token %}
+										{% for product in Shopproducts %}
+											 {% if product.id == id %}
+                                        			<input type="hidden" name="id" id="id" value="{{product.id}}">
+
+                                           product: <input type="text" id="product" name="product" placeholder="product" value="{{product.Product_name}}"><br><br>
+
+                                           Image: <input type="text" id="image" name="image" placeholder="image" value="{{product.image}}}"><br><br>
+												{% endif %}
+									   {% endfor %}
+
+                                           <button type="submit" class="btn btn-primary" >Edit Data</button>
+									    <a href="{% url 'shopproduct' %}?id=0&Mod=open" class="btn btn-success">
+                               						 Close
+                            					 </a>
+                                        </form>
+                              </div>
+
+                         </div>
+
+		{% elif Mod == 'Add' %}
+			 <div class="card9 text-center">
+                                  <div class="card-header">
+                                   <br><h5> Add Shop product</h5>
+                                  </div>
+                              <div class="card-body9">
+                                  <br><br>
+                                   <form action="shopproduct" method="post">
+                                     {% csrf_token %}
+									   			<input type="hidden" name="Mod" id="Mod" value="open">
+									  		 <input type="hidden" name="id" id="id" value="0">
+											product: <input type="text" id="product" name="product" placeholder="product" required><br><br>
+
+                                           Image: <input type="text" id="image" name="image" placeholder="image" required><br><br>
+
+											 <button type="submit" class="btn btn-primary" >Add New</button>
+									  		 <a href="{% url 'shopproduct' %}?id=0&Mod=open" class="btn btn-success">
+                               						 Close
+                            					 </a>
+                                        </form>
+                              </div>
+
+                         </div>
+			{% endif %}
+    </div>
+</div>
+<style>
+
+    input#product[type=text]{
+	width: 230px;
+	height: 40px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #02681;
+	font-family: 'Exo', sans-serif;
+	font-size: 15px;
+	font-weight: 50;
+	padding: 10px;
+}
+input#image[type=text]{
+	width: 230px;
+	height: 40px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #02681;
+	font-family: 'Exo', sans-serif;
+	font-size: 15px;
+	font-weight: 50;
+	padding: 10px;
+}
+
+</style>
+{% endblock %}
