@@ -341,7 +341,7 @@ def shopproduct(request):
                 DeleteList = Productinshop.objects.get(id=val1)
                 DeleteList.delete()
         Shopproducts_all = Productinshop.objects.all()
-        return render(request, 'shopproduct.html', {'id': val1, 'Mod': val2, 'Shopproducts': Shopproducts_all})
+        return render(request, 'Shopproduct.html', {'id': val1, 'Mod': val2, 'Shopproducts': Shopproducts_all})
 
 
 def prdouctlist(request):
