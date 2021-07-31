@@ -94,7 +94,7 @@
 											 {% if product.id == id %}
                                         			<input type="hidden" name="id" id="id" value="{{product.id}}">
 
-                                           product: <input type="text" id="id_Product_name" name="Product_name" placeholder="product" value="{{product.Product_name}}"><br><br>
+                                           product: <input type="text" id="id_Product_name" name="Product_name" placeholder="product" value="{{product.Product_name}}" ><br><br>
 
                                            <p><label for="id_image1">Image1:</label> <input type="file" name="image1" accept="image/*" required="" id="id_image1" capture="camera"></p>
 												{% endif %}
@@ -120,7 +120,7 @@
                                      {% csrf_token %}
 									   			<input type="hidden" name="Mod" id="Mod" value="open">
 									  		 <input type="hidden" name="id" id="id" value="0">
-											 Product_name:<input type="text" name="Product_name" maxlength="255" required="" id="id_Product_name">
+											 Product_name:<input type="text" name="Product_name" maxlength="255" required="" id="id_Product_name" autocomplete="off">
 
                                           	 <br><br> Product_Image:<input type="file" name="image1" accept="image/*" required="" id="id_image1" capture="camera"> <br><br>
 

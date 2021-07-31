@@ -96,24 +96,7 @@
                                   </div>
                               <div class="card-body9">
                                   <br><br>
-                                   <!--- <form action="prdouctlist" method="post">
-									   	<input type="hidden" name="Mod" id="Mod" value="open">
-                                     {% csrf_token %}
-										{% for product in Productall %}
-											 {% if product.id == id %}
-                                        			<input type="hidden" name="id" id="id" value="{{product.id}}">
-									      product: <select name="productid"  id="productid">
-									   					<option value="{{product.Product_name}}">{{product.Product_id}}</option>
-								  					 </select><br><br>
-                                           name: <input type="text" id="product" name="product" placeholder="product" value="{{product.name}}"><br><br>
 
-
-									       Stock: <input type="text" id="Stock" name="Stock" placeholder="Stock" value="{{product.stock}}"><br><br>
-									   		price: <input type="number" id="price" name="price" placeholder="price" value="{{product.price}}"><br><br>
-												{% endif %}
-									   {% endfor %}
-									   </form>
-									   --->
 
 									 <form action="image2" method="post" enctype="multipart/form-data">
 											{% csrf_token %}
@@ -124,10 +107,10 @@
 													 {% if product.id == id %}
 
 													     <input type="hidden" name="id" id="id" value="{{product.id}}">
-										        product id:<input type="text" name="Product_id" maxlength="255" required="" id="id_Product_id" value="{{product.Product_id}}"><br><br>
-												Name:<input type="text" name="name" maxlength="255" required="" id="id_name" value="{{product.name}}"><br><br>
-												Price: <input type="number" name="price" step="any" required="" id="id_price" value="{{product.price}}"><br><br>
-												Stock:</label> <input type="number" name="stock" required="" id="id_stock" value="{{product.stock}}"><br><br>
+										        product id:<input type="text" name="Product_id" maxlength="255" required="" id="id_Product_id" value="{{product.Product_id}}" autocomplete="off"><br><br>
+												Name:<input type="text" name="name" maxlength="255" required="" id="id_name" value="{{product.name}}" autocomplete="off"><br><br>
+												Price: <input type="number" name="price" step="any" required="" id="id_price" value="{{product.price}}" autocomplete="off"><br><br>
+												Stock:</label> <input type="number" name="stock" required="" id="id_stock" value="{{product.stock}}" autocomplete="off"><br><br>
 												 <p><label for="id_image1">Image1:</label> <input type="file" name="image1" accept="image/*" required="" id="id_image1"></p>
 													{% endif %}
 										   {% endfor %}
@@ -147,27 +130,7 @@
                                   </div>
                               <div class="card-body9">
                                   <br><br>
-                                 <!---   <form action="prdouctlist" method="post">
-                                     {% csrf_token %}
-									   			<input type="hidden" name="Mod" id="Mod" value="open">
-									  		 <input type="hidden" name="id" id="id" value="0">
-									  		 product: <select name="productid"  id="productid">
-									   					<option value="">None</option>
-									  					 {% for product in Shopproducts %}
-									   					<option value="{{product.Product_name}}">{{product.Product_name}}</option>
-									  					 {% endfor %}
-								  					 </select><br><br>
-											  Name: <input type="text" id="product" name="product" placeholder="product" value=""><br><br>
 
-                                           Image: <input type="text" id="image" name="image" placeholder="image" value=""><br><br>
-									       Stock: <input type="text" id="Stock" name="Stock" placeholder="Stock" value=""><br><br>
-									   		price: <input type="number" id="price" name="price" placeholder="price" value=""><br><br>
-
-											 <button type="submit" class="btn btn-primary" >Add New</button>
-									  		 <a href="{% url 'prdouctlist' %}?id=0&Mod=open" class="btn btn-success">
-                               						 Close
-                            					 </a>
-									     </form> --->
 									    <form action="image1" method="post" enctype="multipart/form-data">
 
                 						{% csrf_token %}
@@ -180,9 +143,9 @@
 									   					<option value="{{product.Product_name}}">{{product.Product_name}}</option>
 									  					 {% endfor %}
 													 </select></p>
-              							  <p><label for="id_name">Name:</label> <input type="text" name="name" maxlength="255" required="" id="id_name"></p>
-											<p><label for="id_price">Price:</label> <input type="number" name="price" step="any" required="" id="id_price"></p>
-											<p><label for="id_stock">Stock:</label> <input type="number" name="stock" required="" id="id_stock"></p>
+              							  <p><label for="id_name">Name:</label> <input type="text" name="name" maxlength="255" required="" id="id_name" autocomplete="off"></p>
+											<p><label for="id_price">Price:</label> <input type="number" name="price" step="any" required="" id="id_price" autocomplete="off"></p>
+											<p><label for="id_stock">Stock:</label> <input type="number" name="stock" required="" id="id_stock" autocomplete="off"></p>
 											<p><label for="id_image1">Image1:</label> <input type="file" name="image1" accept="image/*" required="" id="id_image1"></p>
 
                 							 <button type="submit" class="btn btn-primary">Add New</button>
