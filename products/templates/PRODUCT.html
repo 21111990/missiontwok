@@ -13,7 +13,9 @@
                         <form action="add" method="post">
                                  {% csrf_token %}
                         <div class="card12">
-                            <img src="{{product.image}}" class="card-img-top" alt="...">
+
+                              <img src="{{product.image1}}" class="card-img-top" alt="...">
+
                           <div class="card-body">
                               <input type="hidden" name="prname1" id="prname1" value="{{product.name}}">
                                  <input type="hidden" name="RandId" id="RandId" value="{{userId1}}">

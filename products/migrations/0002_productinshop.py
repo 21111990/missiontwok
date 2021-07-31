@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('Product_name', models.CharField(max_length=255)),
                 ('image', models.CharField(max_length=2000)),
+                ('image1', models.ImageField(upload_to="img/%y")),
             ],
         ),
     ]

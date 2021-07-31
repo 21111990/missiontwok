@@ -23,6 +23,14 @@
                        <h7 class="card-title"><font color="red"> Bill Confirm Date : {{BillDate}})</font></h7>
                       <h4 class="card-title">Name    : {{username}}</h4>
                       <h5 class="card-title">Mobile  : {{userMobile}}</h5>
+                       <h7 class="card-title"> Address : </h7>
+                            {% for Bill1 in cldetailinfo %}
+                          <h7 class="card-title">  {{Bill1.Client_Add1}} </h7><br>
+                          <h7 class="card-title">  {{Bill1.Client_add2}} </h7><br>
+                          <h7 class="card-title">  {{Bill1.Client_add3}} </h7><br>
+                          <h7 class="card-title">  {{Bill1.Client_pin}} </h7>
+                            {% endfor %}
+
 
                              <table class="table table-striped table-hover">
                                  <tr class="table-dark">

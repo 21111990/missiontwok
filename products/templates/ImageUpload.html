@@ -1,0 +1,33 @@
+{% extends 'ThemeBill.html' %}
+
+{% block content%}
+            <div class="container">
+             <div class="row">
+
+
+           <!---  <form action="image1" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+                 <button type="submit" class="btn btn-lg btn-success">Upload</button>
+            </form> --->
+                 <form action="image1" method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <p><label for="id_name">Name:</label> <input type="text" name="name" maxlength="255" required="" id="id_name"></p>
+<p><label for="id_price">Price:</label> <input type="number" name="price" step="any" required="" id="id_price"></p>
+<p><label for="id_stock">Stock:</label> <input type="number" name="stock" required="" id="id_stock"></p>
+<p><label for="id_image1">Image1:</label> <input type="file" name="image1" accept="image/*" required="" id="id_image1"></p>
+
+                 <button type="submit" class="btn btn-lg btn-success">Upload</button>
+            </form>
+                 {% if obj %}
+                    <h3>Succesfully uploaded : {{img_obj.name}}</h3>
+                    <img src="{{ obj.image1.url}}" alt="image" class="img-thumbnail" >
+                    {% endif %}
+             </div>
+            </div>
+
+{% endblock %}

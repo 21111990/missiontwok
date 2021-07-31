@@ -4,12 +4,20 @@ from datetime import datetime,time
 class Productinshop(models.Model):
     Product_name = models.CharField(max_length=255)
     image = models.CharField(max_length=2000)
+    image1 = models.ImageField(upload_to="img/%y")
+    def __str__(self):
+        return self.Product_name
 class Product(models.Model):
     Product_id = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     price = models.FloatField()
     stock = models.IntegerField()
     image = models.CharField(max_length=2000)
+    image1 = models.ImageField(upload_to="img/%y")
+    def __str__(self):
+        return self.name
+
+
 class BuyProducts(models.Model):
     Client_name = models.CharField(max_length=255)
     client_mobile = models.IntegerField()
