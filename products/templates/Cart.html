@@ -69,8 +69,24 @@
                                 	 </tr>
     						</tbody>
     					</table>
+
     				</div>
-    			</div>
+    			</div><br><br><br>
+				<form action="BillInfo" method="post">
+                             {% csrf_token %}
+									{% for product in Clientdata1 %}
+                        				 {% if product.randid == userId1 %}
+											<input type="hidden" name="BillNo" id="BillNo" value="{{product.id}}">
+											<input type="hidden" name="BClient_id" id="BClient_id" value="{{product.randid}}">
+											<input type="hidden" name="BClient_Name" id="BClient_Name" value="{{product.Client_name}}">
+											<input type="hidden" name="BClient_Mobile" id="BClient_Mobile" value="{{product.client_mobile}}">
+											 <input type="hidden" name="BillAmnt" id="BillAmnt">
+							 			 {% endif %}
+								   {% endfor %}
+
+                                 <button type="submit" class="btn btn-primary" style="width: 320px;position: absolute;left:10%"> Done Purchase</button>
+
+                       </form>
     		</div>
     	</div>
 
