@@ -1,8 +1,8 @@
 import os
-
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import ImageForm,ImageForm_shop
+from PIL import Image
 from .models import Product,Productinshop,BuyProducts,ClientDetailLog,BillDetails,PaymentDone,Client_details
 import random
 from django import forms
