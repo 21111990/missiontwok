@@ -565,7 +565,7 @@ def shopimage1(request):
             Editshop = Productinshop.objects.get(id=val1)
             if len(request.FILES) !=0:
                 Editshop.image1 = request.FILES['image1']
-                Editshop.Product_name = request.POST.get('Product_id')
+                Editshop.Product_name = request.POST.get('Product_name')
                 Editshop.save()
         else:
             image1 = request.FILES['image1']
