@@ -1,7 +1,6 @@
 import os
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from PIL import Image
 from .forms import ImageForm,ImageForm_shop
 
 from .models import Product,Productinshop,BuyProducts,ClientDetailLog,BillDetails,PaymentDone,Client_details
@@ -527,18 +526,7 @@ def logout(request):
     del request.session['id2']
     return redirect('index')
 
-def image1(request):
-    if request.method == "POST":
-        val1 = int(request.POST["id"])
-        val2 = str(request.POST["Mod"])
-        form = ImageForm(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            obj = form.instance
-            Shopproducts_all = Productinshop.objects.all()
-            Product_all = Product.objects.all()
-            return render(request, 'prdouctlist.html',
-                          {'id': val1, 'Mod': val2, 'Productall': Product_all, 'Shopproducts': Shopproducts_all})
+
 def image2(request):
     if request.method == "POST":
         val1 = int(request.POST["id"])
@@ -555,9 +543,19 @@ def image2(request):
                 Editlist.stock = request.POST.get('stock')
                 Editlist.image = request.POST.get('image')
                 Editlist.save()
-                Shopproducts_all = Productinshop.objects.all()
-                Product_all = Product.objects.all()
-                return render(request, 'prdouctlist.html',
+
+        else:
+            image1 = request.FILES['image1']
+            Product_id = request.POST.get('Product_id')
+            name = request.POST.get('name')
+            price = request.POST.get('price')
+            stock = request.POST.get('stock')
+            image = request.POST.get('image')
+            Editlist = Product(image1=image1, Product_id=Product_id, name=name,price=price,stock=stock)
+            Editlist.save()
+        Shopproducts_all = Productinshop.objects.all()
+        Product_all = Product.objects.all()
+        return render(request, 'prdouctlist.html',
                               {'id': val1, 'Mod': val2, 'Productall': Product_all, 'Shopproducts': Shopproducts_all})
 def shopimage1(request):
     if request.method == "POST":
@@ -567,8 +565,13 @@ def shopimage1(request):
             Editshop = Productinshop.objects.get(id=val1)
             if len(request.FILES) !=0:
                 Editshop.image1 = request.FILES['image1']
-                Editshop.Product_id = request.POST.get('Product_id')
+                Editshop.Product_name = request.POST.get('Product_id')
                 Editshop.save()
+        else:
+            image1 = request.FILES['image1']
+            Product_name = request.POST.get('Product_id')
+            Editshop = Productinshop(image1=image1, Product_name=Product_name)
+            Editshop.save()
         Shopproducts_all = Productinshop.objects.all()
         return render(request, 'Shopproduct.html', {'id': val1, 'Mod': val2, 'Shopproducts': Shopproducts_all})
 def shopimage2(request):

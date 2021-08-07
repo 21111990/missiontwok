@@ -28,7 +28,6 @@ urlpatterns = [
     path('shopproduct', views.shopproduct, name='shopproduct'),
     path('prdouctlist', views.prdouctlist, name='prdouctlist'),
     path('logout', views.logout, name='logout'),
-    path('image1', views.image1, name='image1'),
     path('image2', views.image2, name='image2'),
     path('shopimage1', views.shopimage1, name='shopimage1'),
     path('shopimage2', views.shopimage2, name='shopimage2')
