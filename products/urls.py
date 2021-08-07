@@ -29,7 +29,6 @@ urlpatterns = [
     path('prdouctlist', views.prdouctlist, name='prdouctlist'),
     path('logout', views.logout, name='logout'),
     path('image2', views.image2, name='image2'),
-    path('shopimage1', views.shopimage1, name='shopimage1'),
-    path('shopimage2', views.shopimage2, name='shopimage2')
+    path('shopimage1', views.shopimage1, name='shopimage1')
 ] + static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)

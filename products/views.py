@@ -574,15 +574,6 @@ def shopimage1(request):
             Editshop.save()
         Shopproducts_all = Productinshop.objects.all()
         return render(request, 'Shopproduct.html', {'id': val1, 'Mod': val2, 'Shopproducts': Shopproducts_all})
-def shopimage2(request):
-    if request.method == "POST":
-        val1 = int(request.POST["id"])
-        val2 = str(request.POST["Mod"])
-        form = ImageForm_shop(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            obj = form.instance
-        Shopproducts_all = Productinshop.objects.all()
-        return render(request, 'Shopproduct.html', {'id': val1, 'Mod': val2, 'Shopproducts': Shopproducts_all})
+
 
 
