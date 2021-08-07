@@ -569,7 +569,7 @@ def shopimage1(request):
                 Editshop.save()
         else:
             image1 = request.FILES['image1']
-            Product_name = request.POST.get('Product_id')
+            Product_name = request.POST.get('Product_name')
             Editshop = Productinshop(image1=image1, Product_name=Product_name)
             Editshop.save()
         Shopproducts_all = Productinshop.objects.all()
